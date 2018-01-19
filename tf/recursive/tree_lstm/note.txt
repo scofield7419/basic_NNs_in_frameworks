@@ -1,0 +1,7 @@
+tree-lstm for sentiment using stanford sentiment treebank
+
+数据出了个bug
+java -cp /Users/scofield/workplaces/pythons/deep_networks/scott_trials/basic_trials/tf/recursive/tree_lstm/data/raw/lib:/Users/scofield/workplaces/pythons/deep_networks/scott_trials/basic_trials/tf/recursive/tree_lstm/data/raw/lib/stanford-parser.jar:/Users/scofield/workplaces/pythons/deep_networks/scott_trials/basic_trials/tf/recursive/tree_lstm/data/raw/lib/stanford-parser-3.5.1-models.jar DependencyParse -tokpath /Users/scofield/workplaces/pythons/deep_networks/scott_trials/basic_trials/tf/recursive/tree_lstm/data/raw/sst/train/sents.toks -parentpath /Users/scofield/workplaces/pythons/deep_networks/scott_trials/basic_trials/tf/recursive/tree_lstm/data/raw/sst/train/dparents.txt -relpath /Users/scofield/workplaces/pythons/deep_networks/scott_trials/basic_trials/tf/recursive/tree_lstm/data/raw/sst/train/rels.txt  < /Users/scofield/workplaces/pythons/deep_networks/scott_trials/basic_trials/tf/recursive/tree_lstm/data/raw/sst/train/sents.txt
+错误: 找不到或无法加载主类 DependencyParse
+所以无法生成dparent.txt
+进而无法生成label.txt 、 vocab.txt、vocab-cased.txt

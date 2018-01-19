@@ -1,0 +1,60 @@
+def bidirectional_dynamic_rnn(
+cell_fw, # 前向RNN
+cell_bw, # 后向RNN
+inputs, # 输入
+sequence_length=None,# 输入序列的实际长度（可选，默认为输入序列的最大长度）
+initial_state_fw=None,  # 前向的初始化状态（可选）
+initial_state_bw=None,  # 后向的初始化状态（可选）
+dtype=None, # 初始化和输出的数据类型（可选）
+parallel_iterations=None,
+swap_memory=False,
+time_major=False,
+# 决定了输入输出tensor的格式：如果为true, 向量的形状必须为 `[max_time, batch_size, depth]`.
+# 如果为false, tensor的形状必须为`[batch_size, max_time, depth]`.
+scope=None
+)
+返回值：
+一个(outputs, output_states)的元组
+其中，
+1. outputs为(output_fw, output_bw)，是一个包含前向cell输出tensor和后向cell输出tensor组成的元组。假设
+time_major=false,tensor的shape为[batch_size, max_time, depth]。实验中使用tf.concat(outputs, 2)将其拼接。
+2. output_states为(output_state_fw, output_state_bw)，包含了前向和后向最后的隐藏状态的组成的元组。
+output_state_fw和output_state_bw的类型为LSTMStateTuple。
+LSTMStateTuple由（c，h）组成，分别代表memory cell和hidden state。
+
+
+
+ (outputs, output_states) = tf.nn.bidirectional_dynamic_rnn(lstm_fw_cell, lstm_bw_cell, embedded_chars,  dtype=tf.float32)
+
+
+
+embedded_chars为输入的tensor，[batch_szie, max_time, depth]。batch_size为模型当中batch的大小，
+应用在文本中时，max_time可以为句子的长度（一般以最长的句子为准，短句需要做padding），depth为输入句子词向量的维度。
+
+http://blog.csdn.net/wuzqChom/article/details/75453327
+
+
+
+
+
+def BiRNN(x, weights, biases):
+    x = tf.transpose(x, [1, 0, 2])
+    x = tf.reshape(x, [-1, n_input])
+    x = tf.split(x, n_steps)
+
+    lstm_fw_cell = tf.contrib.rnn.BasicLSTMCell(n_hidden, forget_bias=1.0)
+    lstm_bw_cell = tf.contrib.rnn.BasicLSTMCell(n_hidden, forget_bias=1.0)
+
+    outputs, _, _ = tf.contrib.rnn.static_bidirectional_rnn(
+        lstm_fw_cell,
+        lstm_bw_cell,
+        x,
+        dtype=tf.float32
+    )
+    return tf.matmul(outputs[-1], weights) + biases
+
+作者：yeyuel
+链接：http://www.jianshu.com/p/f780d738c58f
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+

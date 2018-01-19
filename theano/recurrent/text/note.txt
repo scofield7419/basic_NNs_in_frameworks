@@ -1,0 +1,19 @@
+https://github.com/syuoni/text-classification-theano
+
+The project homework for "Foundations of Machine Learning".
+
+This project implements RNN, LSTM and CNN for text sentiment classification, based on Theano (0.8.2).
+All models accept pre-trained word embedding inputs.
+
+
+
+Test fold: 0
+18732 training examples
+Traceback (most recent call last):
+4683 validation examples
+  File "/Users/scofield/workplaces/pythons/deep_networks/scott_trials/basic_trials/theano/recurrent/text/model.py", line 1017, in <module>
+Loading word2vec model...
+    model_save_fn=os.path.join(save_dn, 'model-%d' % test_k), disp_proc=False)
+  File "/Users/scofield/workplaces/pythons/deep_networks/scott_trials/basic_trials/theano/recurrent/text/model.py", line 890, in train_with_validation
+    raise Exception("Word2Vec model doesn't exist!", model_type)
+Exception: ("Word2Vec model doesn't exist!", 'lstm')

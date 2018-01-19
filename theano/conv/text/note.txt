@@ -1,0 +1,20 @@
+数据格式
+
+label\t句子，句子的特征之间使用空格隔开
+句子逻辑推理时，句子2代表第二句话
+
+
+训练方法
+使用CNN: python cnn.py -t train_data.txt valid_data.txt dic.txt model_save_dir
+
+使用RNN：python rnn.py -t train_data.txt valid_data.txt dic.txt model_save_dir
+
+
+测试方法
+使用CNN: python cnn.py -p model_file dic.txt predict_data.txt result.txt
+
+使用RNN: python rnn.py -p model_file dic.txt predict_data.txt result.txt
+
+
+
+https://github.com/wangxggc/rnn-theano/tree/master/classification_with_cnn_and_rnn
