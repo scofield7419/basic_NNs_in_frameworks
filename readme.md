@@ -1,7 +1,9 @@
 # 学习笔记：各大神经网络框架下实现几个基础结构神经网络
 
 ### see codes here [github: basic_NNs_in_frameworks](https://github.com/scofield7419/basic_NNs_in_frameworks)
---
+---
+###配套代码的数据集比较大，单独传到了百度云：[data at BaiduCloud](https://pan.baidu.com/s/1bpWH2OZ)
+---
 
 ###  〇、Pre  
 
